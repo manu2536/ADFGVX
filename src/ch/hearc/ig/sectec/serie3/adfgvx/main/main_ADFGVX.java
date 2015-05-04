@@ -7,7 +7,7 @@ package ch.hearc.ig.sectec.serie3.adfgvx.main;
 
 /**
  *
- * @author emmanuel.rondez
+ * @author emmanuel.rondez et moi :)  :) 
  */
 public class main_ADFGVX {
 
