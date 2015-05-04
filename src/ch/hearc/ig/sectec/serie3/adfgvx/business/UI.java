@@ -6,7 +6,7 @@ public class UI {
 	 * 
 	 * @param table
 	 */
-	public void AfficheTable(String[][] table) {
+	public static void AfficheTable(String[][] table) {
 		// TODO - implement UI.AfficheTable
 		throw new UnsupportedOperationException();
 	}

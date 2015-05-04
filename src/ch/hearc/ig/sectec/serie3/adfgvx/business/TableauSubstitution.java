@@ -1,8 +1,10 @@
 package ch.hearc.ig.sectec.serie3.adfgvx.business;
 
+import java.util.HashMap;
+
 public class TableauSubstitution {
 
-	private String[][] subTable;
+	private HashMap subTable;
 
 	public TableauSubstitution() {
 		// TODO - implement TableauSubstitution.TableauSubstitution
@@ -14,11 +16,8 @@ public class TableauSubstitution {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param subTable
-	 */
-	public String[][] getSubTable() {
+	
+public HashMap getSubTable() {
 		// TODO - implement TableauSubstitution.getSubTable
 		throw new UnsupportedOperationException();
 	}
@@ -27,7 +26,19 @@ public class TableauSubstitution {
 	 * 
 	 * @param subTable
 	 */
-	public void setSubTable(String[][] subTable) {
+	public void setSubTable(HashMap subTable) {
+		this.subTable = subTable;
+	}
+
+	public HashMap getSubTable() {
+		return this.subTable;
+	}
+
+	/**
+	 * 
+	 * @param subTable
+	 */
+	public void setSubTable(HashMap subTable) {
 		this.subTable = subTable;
 	}
 
