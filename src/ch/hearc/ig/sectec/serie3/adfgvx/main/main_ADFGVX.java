@@ -5,8 +5,11 @@
  */
 package ch.hearc.ig.sectec.serie3.adfgvx.main;
 
+import ch.hearc.ig.sectec.serie3.adfgvx.business.TableauSubstitution;
 import ch.hearc.ig.sectec.serie3.adfgvx.business.Message;
 import ch.hearc.ig.sectec.serie3.adfgvx.business.UI;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  *
@@ -18,16 +21,46 @@ public class main_ADFGVX {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Initialissation interface 
+        UI ui = new UI();
         // TODO code application logic here
         String cle = "marcel";
-        String mes = "objectif Arras 15h28";
+        String mes = "objectif arras 15h28";
         
-        Message m = new Message();
-        m.setMessage(mes);
-        m.setCle(cle);
-        System.out.println(m.substitue());
-        UI.AfficheTable(m.getIntermediateTable());
+        Message mCode = new Message();
+        mCode.setMessage(mes);
+        mCode.setCle(cle);
+        mCode.substitue();
         
+        System.out.println("Message substitue");
+        ui.AfficheSubMessage(mCode.getSubMessage());
+       // UI.AfficheTable(m.getIntermediateTable());
+        
+        
+        mCode.prepareInterTable();
+        System.out.println("Intermediate Table");
+        ui.AfficheTable(mCode.getIntermediateTable());
+
+        mCode.orderFinalTable();
+        System.out.println("Final Table");
+        ui.AfficheTable(mCode.getFinaleTable());
+     
+        System.out.println("DECODAGE");
+        Message mDecode = new Message();
+        mDecode.setCle(cle);
+        mDecode.setFinaleTable(mCode.getFinaleTable());
+        
+        System.out.println("decode final Table");
+        ui.AfficheTable(mDecode.getFinaleTable());
+        
+        mDecode.finalToIntermediateTable();
+        System.out.println("Intermediate Table");
+        ui.AfficheTable(mDecode.getIntermediateTable());
+        
+        mDecode.toSubMessage();
+        System.out.println("Message substitue");
+        ui.AfficheSubMessage(mDecode.getSubMessage());
+
     }
     
 }
