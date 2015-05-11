@@ -5,11 +5,8 @@
  */
 package ch.hearc.ig.sectec.serie3.adfgvx.main;
 
-import ch.hearc.ig.sectec.serie3.adfgvx.business.TableauSubstitution;
 import ch.hearc.ig.sectec.serie3.adfgvx.business.Message;
 import ch.hearc.ig.sectec.serie3.adfgvx.business.UI;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  *
@@ -57,10 +54,13 @@ public class main_ADFGVX {
         System.out.println("Intermediate Table");
         ui.AfficheTable(mDecode.getIntermediateTable());
         
-        mDecode.toSubMessage();
         System.out.println("Message substitue");
+        mDecode.toSubMessage();
         ui.AfficheSubMessage(mDecode.getSubMessage());
 
+        System.out.println("Message decode");
+        mDecode.deSubstitue();
+        System.out.println(mDecode.getMessage());
     }
     
 }
