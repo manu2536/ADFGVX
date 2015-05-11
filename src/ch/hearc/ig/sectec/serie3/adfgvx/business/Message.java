@@ -93,9 +93,10 @@ public class Message {
         
         public String deSubstitue(){
             StringBuilder sb = new StringBuilder();
-            int index = 1;
+            int index = 0;
             while(index < this.subMessage.length){
                 String[] sub = {this.subMessage[index],this.subMessage[index+1]};
+                String xx = this.tabSub.getKeyByString(sub);
                 sb.append(this.tabSub.getKeyByString(sub));
                 index = index + 2;
             }
