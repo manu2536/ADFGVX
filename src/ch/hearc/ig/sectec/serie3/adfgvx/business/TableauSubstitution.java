@@ -1,6 +1,11 @@
 package ch.hearc.ig.sectec.serie3.adfgvx.business;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class TableauSubstitution {
 
@@ -56,8 +61,9 @@ public class TableauSubstitution {
    
 
 	public void generateTable() {
-		// TODO - implement TableauSubstitution.generateTable
+		// TODO - implement TableauSubstitution.generateTable             
 		throw new UnsupportedOperationException();
+                
 	}
 
 	
@@ -76,13 +82,19 @@ public class TableauSubstitution {
 		this.subTable = subTable;
 	}
 
-
-
-	/**
-	 * 
-	 * @param subTable
-	 */
-
+    public String getKeyByString(String[] sub) {
+        String result = null;    
+        Iterator it = this.subTable.entrySet().iterator();
+        while (result == null && it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            String[] valeur = (String[]) pair.getValue();
+            if(valeur[0].equals(sub[0]) && valeur[1].equals(sub[1]) ){
+                result = (String)pair.getKey();
+            }
+        }
+        
+        return result;
+    }
 
 
 }
