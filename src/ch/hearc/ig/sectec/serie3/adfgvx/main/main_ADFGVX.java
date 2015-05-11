@@ -6,6 +6,7 @@
 package ch.hearc.ig.sectec.serie3.adfgvx.main;
 
 import ch.hearc.ig.sectec.serie3.adfgvx.business.Message;
+import ch.hearc.ig.sectec.serie3.adfgvx.business.TableauSubstitution;
 import ch.hearc.ig.sectec.serie3.adfgvx.business.UI;
 
 /**
@@ -21,6 +22,15 @@ public class main_ADFGVX {
         //Initialissation interface 
         UI ui = new UI();
         
+        //Test genere substitution
+        TableauSubstitution tab = new TableauSubstitution(); 
+        System.out.println("Tableau sub de base");
+        ui.AfficheSubstTable(tab.getSubTable());
+        System.out.println("Tableau aleatoire");
+        tab.generateTable();
+        ui.AfficheSubstTable(tab.getSubTable());
+        
+        
         // TODO code application logic here
         String cle = "marcel";
         String mes = "objectif arras 15h28";
@@ -28,6 +38,7 @@ public class main_ADFGVX {
         Message mCode = new Message();
         mCode.setMessage(mes);
         mCode.setCle(cle);
+        mCode.getTabSub().generateTable();
         mCode.substitue();
         
         System.out.println("Message substitue");
@@ -42,10 +53,12 @@ public class main_ADFGVX {
         mCode.orderFinalTable();
         System.out.println("Final Table");
         ui.AfficheTable(mCode.getFinaleTable());
-     
+        //Recupere tableau substitution
+        TableauSubstitution tabSubCode = mCode.getTabSub();
         System.out.println("DECODAGE");
         Message mDecode = new Message();
         mDecode.setCle(cle);
+        mDecode.setTabSub(tabSubCode);
         mDecode.setFinaleTable(mCode.getFinaleTable());
         
         System.out.println("decode final Table");
