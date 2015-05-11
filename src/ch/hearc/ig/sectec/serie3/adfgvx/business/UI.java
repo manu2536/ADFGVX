@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
 public class UI {
 
@@ -32,17 +33,6 @@ public class UI {
             System.out.println(sb.toString()); 
 
    
-            
-            /*
-            Iterator iterator = substTable.keySet().iterator();  
-
-            System.out.println("coufcouss"); 
-                while(iterator.hasNext()){
-                    String key = (String) iterator.next();
-
-                    System.out.println("UI : Coucou "); 
-                    //System.out.println(substTable.get(key)[0].toString() + substTable.get(key)[1].toString()); 
-                }*/
 	}
         
         public void AfficheTable(LinkedList table){
@@ -67,5 +57,50 @@ public class UI {
             }
             System.out.println(sb.toString());
         }   
+        
+        
+        /*
+        L'utilisateur doit pouvoir choisir :
+            • l'action : chiffrer ou déchiffrer
+            • le texte à traiter
+            • la clé
+            • le tableau de substitution (définir ou aléatoire)
+        */
+        
+        public void menuAffiche(){
+            System.out.println("---- MENU ---- ");
+        }
+        
+        public int saisieChiffrerDechiffrer(){
+            System.out.println("Que voulez-vous faire? (1/2)");
+            System.out.println(" 1. Chiffrer un message");
+            System.out.println(" 2. Déchiffrer un message");
+            System.out.print("(Saisir 1 ou 2) : ");
+            
+            Scanner sc = new Scanner(System.in);
+            int i = sc.nextInt();
+            return i; 
+        }
+        
+        public String saisieMessage(String chiffreDechiffre){
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Message à "+chiffreDechiffre+" : ");
+            String message = sc.nextLine(); 
+            return message; 
+        }
+        
+        public String saisieCle(){
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Clé : ");
+            String cle = sc.next(); 
+            return cle; 
+        }
+        
+        public void afficheLigne(int nbLigne){
+            for (int i=0; i<nbLigne; i++){
+                System.out.println(); 
+            }
+            
+        }
 
 }
