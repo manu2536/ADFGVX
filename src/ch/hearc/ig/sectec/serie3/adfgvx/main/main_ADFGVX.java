@@ -23,6 +23,10 @@ public class main_ADFGVX {
     public static void main(String[] args) {
         //Initialissation interface 
         UI ui = new UI();
+        
+        
+        
+        
         // TODO code application logic here
         String cle = "marcel";
         String mes = "objectif arras 15h28";
