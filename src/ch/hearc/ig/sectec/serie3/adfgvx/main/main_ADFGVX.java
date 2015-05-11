@@ -21,9 +21,6 @@ public class main_ADFGVX {
         //Initialissation interface 
         UI ui = new UI();
         
-        
-        
-        
         // TODO code application logic here
         String cle = "marcel";
         String mes = "objectif arras 15h28";
@@ -65,6 +62,7 @@ public class main_ADFGVX {
         System.out.println("Message decode");
         mDecode.deSubstitue();
         System.out.println(mDecode.getMessage());
+        
     }
     
 }

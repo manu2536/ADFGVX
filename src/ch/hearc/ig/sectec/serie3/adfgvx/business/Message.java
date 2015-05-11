@@ -173,7 +173,7 @@ public class Message {
                 }
                 
             }
-            this.subMessage = sb.toString().split("");
+            this.subMessage = sb.toString().split("(?<!\\A)(?=[A-Z])");
         }
 
         // Fonction concatenation Tableau
