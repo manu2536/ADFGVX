@@ -34,7 +34,7 @@ public class main_ADFGVX {
         */
         
         // TODO code application logic here
-        String cle = "marcels";
+        String cle = "marcel";
         String mes = "objectif arras 15h28";
         
         Message mCode = new Message();
