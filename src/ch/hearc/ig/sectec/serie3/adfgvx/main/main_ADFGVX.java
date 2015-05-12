@@ -34,13 +34,13 @@ public class main_ADFGVX {
         */
         
         // TODO code application logic here
-        String cle = "marcel";
+        String cle = "marcels";
         String mes = "objectif arras 15h28";
         
         Message mCode = new Message();
         mCode.setMessage(mes);
         mCode.setCle(cle);
-        mCode.getTabSub().generateTable();
+        //mCode.getTabSub().generateTable();
         mCode.substitue();
         
         System.out.println("Message substitue");
@@ -58,15 +58,18 @@ public class main_ADFGVX {
         //Recupere tableau substitution
         
         
-                System.out.println("Final en String");
-        
+        System.out.println("Final en String");
+        String messCode = mCode.getMessageChiffrer();
+        System.out.println(messCode);
         
         TableauSubstitution tabSubCode = mCode.getTabSub();
         System.out.println("DECODAGE");
         Message mDecode = new Message();
         mDecode.setCle(cle);
         mDecode.setTabSub(tabSubCode);
-        mDecode.setFinaleTable(mCode.getFinaleTable());
+        //String messCode = "FVAXADDADFVAAGFFFADDFFXXXDDGFAVGFVGF";
+        mDecode.setMessageADechiffrer(messCode);
+        //mDecode.setFinaleTable(mCode.getFinaleTable());
         
         System.out.println("decode final Table");
         ui.AfficheTable(mDecode.getFinaleTable());

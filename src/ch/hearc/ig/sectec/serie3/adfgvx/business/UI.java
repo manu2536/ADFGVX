@@ -92,7 +92,7 @@ public class UI {
         
         public String saisieCle(){
             Scanner sc = new Scanner(System.in);
-            System.out.print("Clé : ");
+            System.out.print("Clé (pas 2x la même lettre): ");
             String cle = sc.next(); 
             return cle; 
         }

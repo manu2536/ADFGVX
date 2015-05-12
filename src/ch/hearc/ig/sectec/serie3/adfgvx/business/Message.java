@@ -2,6 +2,7 @@ package ch.hearc.ig.sectec.serie3.adfgvx.business;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class Message {
 
@@ -162,7 +163,7 @@ public class Message {
     public LinkedList stringToFinalTable(String text){
         char[] data = cle.toCharArray();
         Arrays.sort(data);
-        int sizeText = data.length;
+        int sizeText = text.length();
         int sizeCle  = this.cle.length();
         int nbLine   = 0;
         if ((sizeText % sizeCle) > 0) {
@@ -170,6 +171,7 @@ public class Message {
         }else {
             nbLine = sizeText / sizeCle;
         }
+        String[] textArray = text.split("(?<!\\A)(?=[A-Z])");
         LinkedList finalTable = new LinkedList();
         int iColonne = 0;
         for (char charCle : data) {
@@ -179,7 +181,7 @@ public class Message {
                 //System.out.println("Calcul:"+selChar);
                 if (selChar < sizeText) {
                     //System.out.println("Char:"+this.subMessage[selChar]);
-                    col.addNextLetter(Character.toString(data[selChar]));
+                    col.addNextLetter(textArray[selChar]);
                 }else {
                     col.addNextLetter("A");
                 }
@@ -187,7 +189,8 @@ public class Message {
             iColonne++;
             finalTable.add(col);
         }
-        return finalTable; 
+        this.finaleTable = finalTable;
+        return this.finaleTable; 
     }
 
    
@@ -255,6 +258,20 @@ public class Message {
      */
     public void setMessageADechiffrer(String messageADechiffrer) {
         this.messageADechiffrer = messageADechiffrer;
+        stringToFinalTable(messageADechiffrer);
+    }
+    
+    public String getMessageChiffrer(){
+        StringBuilder sb = new StringBuilder(); 
+            int nbLineTable = ((ColonneTable)this.finaleTable.getFirst()).getNbLine();
+            for(int line=0;line<nbLineTable;line++){
+                //Impression Ligne
+                for(int col=0;col<this.finaleTable.size();col++){
+                    String lettre =  ((ColonneTable)this.finaleTable.get(col)).getLetterAtLine(line);
+                    sb.append(lettre);
+                }
+            }
+        return sb.toString();
     }
 
 }
