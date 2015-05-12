@@ -23,13 +23,15 @@ public class main_ADFGVX {
         UI ui = new UI();
         
         //Test genere substitution
+        /*
         TableauSubstitution tab = new TableauSubstitution(); 
+        
         System.out.println("Tableau sub de base");
         ui.AfficheSubstTable(tab.getSubTable());
         System.out.println("Tableau aleatoire");
         tab.generateTable();
         ui.AfficheSubstTable(tab.getSubTable());
-        
+        */
         
         // TODO code application logic here
         String cle = "marcel";
@@ -54,6 +56,11 @@ public class main_ADFGVX {
         System.out.println("Final Table");
         ui.AfficheTable(mCode.getFinaleTable());
         //Recupere tableau substitution
+        
+        
+                System.out.println("Final en String");
+        
+        
         TableauSubstitution tabSubCode = mCode.getTabSub();
         System.out.println("DECODAGE");
         Message mDecode = new Message();

@@ -68,6 +68,7 @@ public class UI {
         */
         
         public void menuAffiche(){
+            System.out.println("-- -- ADFGVX -- -- ");
             System.out.println("---- MENU ---- ");
         }
         
@@ -96,11 +97,25 @@ public class UI {
             return cle; 
         }
         
-        public void afficheLigne(int nbLigne){
+        public void afficheLigneVide(int nbLigne){
             for (int i=0; i<nbLigne; i++){
                 System.out.println(); 
-            }
-            
+            }   
         }
-
+        
+        public Boolean continuer() {
+            String reponse; 
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Voulez-vous quitter le programme? (Q pour Quitter) ");
+            reponse = sc.next(); 
+            if(reponse.equals("q") || reponse.equals("Q")){
+                return false; 
+            }else{
+                return true; 
+            }
+        }
+        
+        public void auRevoir(){
+            System.out.print("Au revoir et à bientôt!");
+        }
 }

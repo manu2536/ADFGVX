@@ -5,11 +5,12 @@ import java.util.LinkedList;
 
 public class Message {
 
-    private String cle;
-    private String message;
-    private String[] subMessage;
-    private LinkedList intermediateTable;
-    private LinkedList finaleTable;
+    private String      cle;
+    private String      message;
+    private String      messageADechiffrer;
+    private String[]    subMessage;
+    private LinkedList  intermediateTable;
+    private LinkedList  finaleTable;
     private TableauSubstitution tabSub;
 
     public Message() {
@@ -85,7 +86,6 @@ public class Message {
     }
 
     public String[] substitue() {
-        StringBuilder subMessage = new StringBuilder();
         String[] subM = {};
 
         for (char ch : this.message.toCharArray()) {
@@ -155,7 +155,43 @@ public class Message {
         }
         this.finaleTable = finalTable;
     }
+    
+    
+    
+    // Tranforme string en tableau final
+    public LinkedList stringToFinalTable(String text){
+        char[] data = cle.toCharArray();
+        Arrays.sort(data);
+        int sizeText = data.length;
+        int sizeCle  = this.cle.length();
+        int nbLine   = 0;
+        if ((sizeText % sizeCle) > 0) {
+            nbLine = sizeText / sizeCle + 1;
+        }else {
+            nbLine = sizeText / sizeCle;
+        }
+        LinkedList finalTable = new LinkedList();
+        int iColonne = 0;
+        for (char charCle : data) {
+            ColonneTable col = new ColonneTable(Character.toString(charCle));
+            for (int ligne = 0; ligne < nbLine; ligne++) {
+                int selChar = ((sizeCle * ligne) + iColonne);
+                //System.out.println("Calcul:"+selChar);
+                if (selChar < sizeText) {
+                    //System.out.println("Char:"+this.subMessage[selChar]);
+                    col.addNextLetter(Character.toString(data[selChar]));
+                }else {
+                    col.addNextLetter("A");
+                }
+            }
+            iColonne++;
+            finalTable.add(col);
+        }
+        return finalTable; 
+    }
 
+   
+    
     // Tri le tableau avec la clé
     public void finalToIntermediateTable() {
         //Trie clé
@@ -205,6 +241,20 @@ public class Message {
         }
         return colT;
 
+    }
+
+    /**
+     * @return the messageADechiffrer
+     */
+    public String getMessageADechiffrer() {
+        return messageADechiffrer;
+    }
+
+    /**
+     * @param messageADechiffrer the messageADechiffrer to set
+     */
+    public void setMessageADechiffrer(String messageADechiffrer) {
+        this.messageADechiffrer = messageADechiffrer;
     }
 
 }
