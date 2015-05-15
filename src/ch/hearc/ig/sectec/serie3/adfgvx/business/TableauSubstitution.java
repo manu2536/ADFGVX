@@ -59,37 +59,36 @@ public class TableauSubstitution {
             this.subTable.put("9", new String[]{"X","X"});
 	}
         
-   
 
-    public void generateTable() {
-        this.subTable.clear();
-        List<String> letter = new ArrayList();
-        String alpha = "abcdefghijklmnopqrstuvwxyz0123456789";
-        for(char a : alpha.toCharArray()){
-            letter.add(Character.toString(a));
+
+        public void generateTable() {
+            this.subTable.clear();
+            List<String> letter = new ArrayList();
+            String alpha = "abcdefghijklmnopqrstuvwxyz0123456789";
+            for(char a : alpha.toCharArray()){
+                letter.add(Character.toString(a));
+            }
+            String adfgvx = "AAADAFAGAVAXDADDDFDGDVDXFAFDFFFGFVFXGAGDGFGGGVGXVAVDVFVGVVVXXAXDXFXGXVXX";
+            char[] ch = adfgvx.toCharArray();
+            int index = 0;
+            List<String[]> adf = new ArrayList();
+            while(index < ch.length){
+                adf.add(new String[]{Character.toString(ch[index]),Character.toString(ch[index+1])});
+                index = index + 2;
+            }
+            for (int i = 0; i<36;i++ ) {
+                String key = letter.remove(randInt(0, letter.size() - 1));
+                String[] pair = adf.remove(randInt(0, adf.size() - 1));
+                this.subTable.put(key,pair);
+            }
+
         }
-        String adfgvx = "AAADAFAGAVAXDADDDFDGDVDXFAFDFFFGFVFXGAGDGFGGGVGXVAVDVFVGVVVXXAXDXFXGXVXX";
-        char[] ch = adfgvx.toCharArray();
-        int index = 0;
-        List<String[]> adf = new ArrayList();
-        while(index < ch.length){
-            adf.add(new String[]{Character.toString(ch[index]),Character.toString(ch[index+1])});
-            index = index + 2;
+
+
+
+        public HashMap<String, String[]> getSubTable() {
+                return subTable;
         }
-        for (int i = 0; i<36;i++ ) {
-            String key = letter.remove(randInt(0, letter.size() - 1));
-            String[] pair = adf.remove(randInt(0, adf.size() - 1));
-            this.subTable.put(key,pair);
-        }
-
-    }
-
-	
-
-	public HashMap<String, String[]> getSubTable() {
-		return subTable;
-
-	}
 
 
 	/**
@@ -100,23 +99,23 @@ public class TableauSubstitution {
 		this.subTable = subTable;
 	}
 
-    public String getKeyByString(String[] sub) {
-        String result = null;    
-        Iterator it = this.subTable.entrySet().iterator();
-        while (result == null && it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            String[] valeur = (String[]) pair.getValue();
-            if(valeur[0].equals(sub[0]) && valeur[1].equals(sub[1]) ){
-                result = (String)pair.getKey();
+        public String getKeyByString(String[] sub) {
+            String result = null;    
+            Iterator it = this.subTable.entrySet().iterator();
+            while (result == null && it.hasNext()) {
+                Map.Entry pair = (Map.Entry)it.next();
+                String[] valeur = (String[]) pair.getValue();
+                if(valeur[0].equals(sub[0]) && valeur[1].equals(sub[1]) ){
+                    result = (String)pair.getKey();
+                }
             }
+
+            return result;
         }
-        
-        return result;
-    }
     
     private int randInt(int min, int max) {
-    Random rand = new Random();
-    int randomNum = rand.nextInt((max - min) + 1) + min;
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
     return randomNum;
 }
 

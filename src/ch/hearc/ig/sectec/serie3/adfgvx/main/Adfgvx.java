@@ -6,6 +6,7 @@
 package ch.hearc.ig.sectec.serie3.adfgvx.main;
 
 import ch.hearc.ig.sectec.serie3.adfgvx.business.Message;
+import ch.hearc.ig.sectec.serie3.adfgvx.business.TableauSubstitution;
 import ch.hearc.ig.sectec.serie3.adfgvx.business.UI;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -45,14 +46,14 @@ public class Adfgvx {
             cle = ui.saisieCle(); 
             
 
+            mCode.setCle(cle);
             if (chiffrer) {
                 mCode.setMessage(mes);
-                mCode.getTabSub().generateTable();
+                //mCode.getTabSub().generateTable();
                 mCode.substitue();
             } else {
                 mCode.setMessageADechiffrer(mes);
             }
-            mCode.setCle(cle);
             ui.afficheLigneVide(2);
 
 
@@ -72,12 +73,27 @@ public class Adfgvx {
                 ui.AfficheTable(mCode.getFinaleTable());
                 
                 System.out.println("Final en String");
+                String messCode = mCode.getMessageChiffrer();
+                System.out.println(messCode);
             } 
             else {
+                
+                
+                
+                System.out.println("Final en String");
+                //mCode.setMessageADechiffrer("FVAXADDADFVAAGFFFADDFFXXXDDGFAVGFVGF");
+                String messCode = mCode.getMessageChiffrer();
+                System.out.println(mCode.getMessageADechiffrer());
+                
+                
+                TableauSubstitution tabSubCode = mCode.getTabSub();
                 System.out.println("DECODAGE");
                 Message mDecode = new Message();
                 mDecode.setCle(cle);
-                mDecode.setFinaleTable(mCode.getFinaleTable());
+                mDecode.setTabSub(tabSubCode);
+                //String messCode = "FVAXADDADFVAAGFFFADDFFXXXDDGFAVGFVGF";
+                mDecode.setMessageADechiffrer(messCode);
+                //mDecode.setFinaleTable(mCode.getFinaleTable());
 
                 System.out.println("decode final Table");
                 ui.AfficheTable(mDecode.getFinaleTable());

@@ -1,5 +1,7 @@
 /*
- * Chiffrage et déchiffrage par un tableau de substitution généré aléatoirement
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package ch.hearc.ig.sectec.serie3.adfgvx.main;
 
@@ -9,10 +11,9 @@ import ch.hearc.ig.sectec.serie3.adfgvx.business.UI;
 
 /**
  *
- * @author emmanuel.rondez et moi 
+ * @author emmanuel.rondez et moi :)  :) 
  */
-public class main_ADFGVX {
-
+public class main_ADFGVX_copy {
 
     /**
      * @param args the command line arguments
@@ -20,8 +21,6 @@ public class main_ADFGVX {
     public static void main(String[] args) {
         //Initialissation interface 
         UI ui = new UI();
-        int i; 
-        Boolean continuer = true; 
         
         //Test genere substitution
         /*
@@ -34,16 +33,18 @@ public class main_ADFGVX {
         ui.AfficheSubstTable(tab.getSubTable());
         */
         
-        String cle ;
-        String mes ;
+        // TODO code application logic here
+        String cle = "marcel";
+        String mes = "objectif arras 15h28";
+        
         Message mCode = new Message();
-
-            mes = ui.saisieMessage("Chiffrer"); 
-            cle = ui.saisieCle(); 
+        
+        
+        
         
         mCode.setMessage(mes);
         mCode.setCle(cle);
-        mCode.getTabSub().generateTable();
+        //mCode.getTabSub().generateTable();
         mCode.substitue();
         
         System.out.println("Message substitue");
@@ -64,13 +65,6 @@ public class main_ADFGVX {
         System.out.println("Final en String");
         String messCode = mCode.getMessageChiffrer();
         System.out.println(messCode);
-        
-        
-        
-        
-        
-        
-        
         
         
         TableauSubstitution tabSubCode = mCode.getTabSub();
